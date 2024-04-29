@@ -72,5 +72,3 @@ Aqui está a estrutura de diretórios e arquivos do SDK:
 ## Contribuindo
 
 Se encontrar algum problema ou quiser contribuir com melhorias, fique à vontade para abrir uma [issue](https://github.com/fsdrasfragoso/asaas-sdk-php/issues) ou enviar um [pull request](https://github.com/fsdrasfragoso/asaas-sdk-php/pulls) no repositório do GitHub.
-
-Espero que isso ajude! Se precisar de mais alguma coisa, estou à disposição.
