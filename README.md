@@ -25,31 +25,43 @@ Após instalar o SDK, você pode utilizá-lo em seu projeto da seguinte maneira:
 ```php
 require_once 'vendor/autoload.php';
 
+use Asaas\Api\Customers\CustomerService;
+use Asaas\Customers\CustomerManager;
 use Asaas\Api\Payments\PaymentService;
 use Asaas\Payments\PaymentManager;
 
-// Configure o SDK com sua chave de API
 $apiKey = 'sua-chave-de-api';
 
+$customerService = new CustomerService($apiKey);
+$customerManager = new CustomerManager($customerService);
+
+$customerData = [
+    'name' => 'João Silva',
+    'cpfCnpj' => '000.000.000-00',
+    'email' => 'joao.silva@email.com',
+    'phone' => '4730280400',
+    'mobilePhone' => '47991234444',
+    'address' => 'Rua Exemplo, 123',
+    'postalCode' => '89223000'
+];
+
+$customer = $customerManager->createCustomer($customerData);
+
+echo "Cliente criado com sucesso. ID: " . $customer->id;
 $paymentService = new PaymentService($apiKey);
 $paymentManager = new PaymentManager($paymentService);
 
-// Crie uma nova cobrança
-$data = [
-    'customer' => 'identificador-do-cliente',
-    'billingType' => 'BOLETO', // ou PIX, CARTAO
+$paymentData = [
+    'customer' => $customer->id,
+    'billingType' => 'BOLETO',
     'value' => 100.00,
     'dueDate' => '2024-05-05',
     'description' => 'Descrição da cobrança'
 ];
 
-$payment = $paymentManager->create($data);
+$payment = $paymentManager->create($paymentData);
 
-if ($payment) {
-    echo "Cobrança criada com sucesso. ID: " . $payment->id;
-} else {
-    echo "Erro ao criar a cobrança.";
-}
+echo "Cobrança criada com sucesso. ID: " . $payment->id;
 ```
 
 ## Documentação

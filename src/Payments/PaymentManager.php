@@ -46,9 +46,7 @@ class PaymentManager implements PaymentInterface
     // Método para converter um objeto Payment em um array associativo
     protected function paymentToArray(Payment $payment)
     {
-        $paymentArray = (array) $payment;
-
-        // Se necessário, realizar outras transformações ou validações aqui
+        $paymentArray = (array) $payment;       
 
         return $paymentArray;
     }
