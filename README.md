@@ -64,6 +64,42 @@ $payment = $paymentManager->create($paymentData);
 echo "Cobrança criada com sucesso. ID: " . $payment->id;
 ```
 
+## Criando um Cliente com um Objeto Customer
+```php
+// Configuração do SDK já realizada anteriormente
+
+// Criação do objeto Customer sem parâmetros iniciais no construtor
+$customer = new Customer();
+$customer->setName("Carlos Silva");
+$customer->setCpfCnpj("111.222.333-44");
+$customer->setEmail("carlos.silva@example.com");
+$customer->setPhone("2133445566");
+$customer->setMobilePhone("21988776655");
+$customer->setAddress("Rua das Laranjeiras, 200");
+$customer->setAddressNumber("20");
+$customer->setComplement("Casa");
+$customer->setProvince("Zona Sul");
+$customer->setPostalCode("22000-000");
+$customer->setExternalReference("54321");
+$customer->setNotificationDisabled(true);
+$customer->setAdditionalEmails("carlos.negocios@example.com");
+$customer->setMunicipalInscription("654321789");
+$customer->setStateInscription("321654987");
+$customer->setObservations("Cliente atacadista");
+$customer->setGroupName("Atacado");
+$customer->setCompany("Carlos Frutas LTDA");
+
+// Usando o CustomerManager para criar o cliente no Asaas
+$result = $customerManager->createCustomer($customer);
+
+if ($result) {
+    echo "Cliente criado com sucesso. ID: " . $result->id;
+} else {
+    echo "Erro ao criar cliente.";
+}
+
+```
+
 ## Documentação
 
 Para mais informações sobre os métodos disponíveis e os parâmetros necessários, consulte a [documentação oficial do Asaas](https://docs.asaas.com/docs/guia-de-cobrancas).
