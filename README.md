@@ -15,7 +15,7 @@ Para instalar o SDK, siga estes passos:
 4. Execute o seguinte comando para instalar o SDK via Composer:
 
 ```bash
-composer require asaas/asaas-sdk-php
+composer require fsdrasfragoso/asaas-sdk
 ```
 
 ## Utilização
