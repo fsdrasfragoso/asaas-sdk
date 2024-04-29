@@ -25,5 +25,22 @@ class NotificationService extends AsaasClient
         return $this->put($endpoint, $notificationData);
     }
 
-    
+    /**
+     * Atualiza múltiplas notificações em lote.
+     *
+     * @param string $customerId Identificador único do cliente no Asaas.
+     * @param array $notifications Lista de notificações a serem atualizadas.
+     * @return mixed
+     */
+    public function updateNotificationsInBatch($customerId, array $notifications)
+    {
+        $endpoint = $this->defaultEndpoint . '/batch';
+        $data = [
+            'customer' => $customerId,
+            'notifications' => $notifications
+        ];
+        return $this->put($endpoint, $data);
+    }
+
+
 }
